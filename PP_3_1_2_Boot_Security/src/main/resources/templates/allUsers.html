@@ -67,8 +67,8 @@
 
                             <tr>
                                 <th scope="col">Id</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Surname</th>
+                                <th scope="col">First name</th>
+                                <th scope="col">Last name</th>
                                 <th scope="col">Age</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Role</th>
@@ -82,7 +82,6 @@
                                 <td th:text="${user.getLastName()}"/>
                                 <td th:text="${user.getAge()}"/>
                                 <td th:text="${user.getEmail()}"/>
-                                <!--        <td th:text="${user.getPassword()}"/>-->
                                 <td th:each="role : ${user.getRoles()}">
                                     <th:block th:text="${role.getName()}"></th:block>
                                 </td>
@@ -148,7 +147,7 @@
                                                             <div class="col-sm-6">
                                                                 <label for="userAge" class="center-block"><span
                                                                         class="font-weight-bold"><strong>Age</strong></span></label>
-                                                                <input type="text"
+                                                                <input type="number"
                                                                        class="form-control collection-ville text-center"
                                                                        id="userAge" name="age"
                                                                        th:value="${user.getAge()}" th:name="age">
@@ -177,14 +176,14 @@
                                                             </div>
                                                         </div>
 
+
                                                         <div class="form-group text-center row justify-content-center align-items-center">
                                                             <div class="col-sm-6">
-                                                                <label for="userRole" class="center-block"><span
-                                                                        class="font-weight-bold"><strong>Role</strong></span></label>
-                                                                <input type="text"
-                                                                       class="form-control collection-ville text-center"
-                                                                       id="userRole" name="roles"
-                                                                       th:value="${user.getRoles()}" th:name="roles">
+                                                            <label for="exampleFormControlSelect2"><b>Role</b></label>
+                                                            <select multiple class="form-control form-control-sm" id="exampleFormControlSelect2" size="2" th:name="roles">
+                                                                <option value="1">ADMIN</option>
+                                                                <option value="2" selected>USER</option>
+                                                            </select>
                                                             </div>
                                                         </div>
 
@@ -251,11 +250,11 @@
 
                                                         <div class="form-group text-center row justify-content-center align-items-center">
                                                             <div class="col-sm-6">
-                                                                <label for="userNamedel" class="center-block"><span
+                                                                <label for="userNameDel" class="center-block"><span
                                                                         class="font-weight-bold"><strong>Last name</strong></span></label>
                                                                 <input type="text"
                                                                        class="form-control collection-ville text-center"
-                                                                       id="userNamedel" name="lastname"
+                                                                       id="userNameDel" name="lastname"
                                                                        th:value="${user.getLastName()}"
                                                                        th:name="lastname" readonly="readonly">
                                                             </div>
@@ -378,11 +377,13 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row justify-content-center align-items-center">
+                            <div class="form-group text-center row justify-content-center align-items-center">
                                 <div class="col-sm-3 text-center">
-                                    <label><strong>Role</strong></label>
-                                    <br/>
-                                    <input type="text" th:field="*{roles}">
+                                    <label for="Select2"><b>Role</b></label>
+                                    <select multiple class="form-control form-control-sm" id="Select2" size="2" th:field="*{roles}">
+                                        <option value="1">ADMIN</option>
+                                        <option value="2" selected>USER</option>
+                                    </select>
                                 </div>
                             </div>
 
