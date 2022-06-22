@@ -42,6 +42,7 @@ public class UserService implements UserDetailsService {
     }
     @Transactional
     public void updateUser(User user) {
+        System.out.println(user.toString());
         User userFromDb = userRepository.getById(user.getId());
         if(!userFromDb.getPassword().equals(user.getPassword())) {
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
