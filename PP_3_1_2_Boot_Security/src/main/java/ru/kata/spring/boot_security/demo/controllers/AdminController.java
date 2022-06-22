@@ -64,12 +64,6 @@ public class AdminController {
 //        return "redirect:/admin";
 //    }
 
-    //    @PostMapping("/update/{id}")
-//    public String update(@ModelAttribute("user") User user) {
-//        userService.updateUser(user);
-//        return "redirect:/admin";
-//    }
-
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") Long id, Model model) {
         List<User> users = userService.getAllUsers();
