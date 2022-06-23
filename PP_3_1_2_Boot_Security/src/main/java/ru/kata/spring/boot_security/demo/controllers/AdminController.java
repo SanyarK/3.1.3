@@ -16,13 +16,11 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-
     private final UserService userService;
 
     public AdminController(UserService userService) {
         this.userService = userService;
     }
-
 
     @GetMapping
     public String getUsers(Model model, Principal principal) {
@@ -45,24 +43,12 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") Long id) {
-        model.addAttribute("userEdit", userService.getUser(id));
-        return "/edit";
-    }
-
     @PatchMapping ("/{id}")
     public String update(@ModelAttribute("userEdit") User user, @PathVariable("id") Long id) {
         user.setId(id);
         userService.updateUser(user);
         return "redirect:/admin";
     }
-
-//    @PostMapping("/update/{id}")
-//    public String update(@ModelAttribute("user") User user) {
-//        userService.updateUser(user);
-//        return "redirect:/admin";
-//    }
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") Long id, Model model) {
@@ -71,5 +57,4 @@ public class AdminController {
         userService.deleteUser(id);
         return "redirect:/admin";
     }
-
 }
